@@ -15,6 +15,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  // tslint:disable-next-line: member-ordering
   bar = {
     type: 'bar',
     data: {
@@ -56,6 +57,7 @@ export class HomeComponent implements OnInit {
     },
   };
 
+  // tslint:disable-next-line: member-ordering
   mix2 = {
     type: 'bar',
     options: {
@@ -138,6 +140,7 @@ export class HomeComponent implements OnInit {
     },
   };
 
+  // tslint:disable-next-line: member-ordering
   doughnut = {
     type: 'doughnut',
     data: {
@@ -164,6 +167,7 @@ export class HomeComponent implements OnInit {
     },
   };
 
+  // tslint:disable-next-line: member-ordering
   mix1 = {
     type: 'bar',
     options: {
@@ -247,6 +251,7 @@ export class HomeComponent implements OnInit {
     },
   };
 
+  // tslint:disable-next-line: member-ordering
   radar = {
     type: 'radar',
     options: {
@@ -289,6 +294,7 @@ export class HomeComponent implements OnInit {
     },
   };
 
+  // tslint:disable-next-line: member-ordering
   horizontalBar = {
     type: 'bar',
     options: {
@@ -328,6 +334,7 @@ export class HomeComponent implements OnInit {
     },
   };
 
+  // tslint:disable-next-line: member-ordering
   polar = {
     type: 'polarArea',
     data: {
@@ -353,6 +360,7 @@ export class HomeComponent implements OnInit {
     },
   };
 
+  // tslint:disable-next-line: member-ordering
   line = {
     type: 'line',
     options: {
