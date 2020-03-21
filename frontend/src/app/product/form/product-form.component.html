@@ -1,0 +1,156 @@
+<form
+  class="form"
+  (ngSubmit)="doSave()"
+  [formGroup]="form"
+  #ngForm="ngForm"
+  *ngIf="form"
+>
+  <mat-form-field
+    floatLabel="always"
+    appearance="outline"
+    *ngIf="isEditing"
+  >
+    <mat-label>{{ fields.id.label }}</mat-label>
+    <input matInput [value]="record.id" [disabled]="true" />
+  </mat-form-field>
+
+    <mat-form-field floatLabel="always" appearance="outline">
+      <mat-label>{{ fields.code.label }}</mat-label>
+      <input
+        matInput
+        [formControlName]="fields.code.name"
+        [required]="fields.code.required"
+      appAutofocus
+      />
+
+      <mat-error>
+        <app-validations
+          [control]="form.get(fields.code.name)"
+          [label]="fields.code.label"
+        ></app-validations>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field floatLabel="always" appearance="outline">
+      <mat-label>{{ fields.name.label }}</mat-label>
+      <input
+        matInput
+        [formControlName]="fields.name.name"
+        [required]="fields.name.required"
+      />
+
+      <mat-error>
+        <app-validations
+          [control]="form.get(fields.name.name)"
+          [label]="fields.name.label"
+        ></app-validations>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field floatLabel="always" appearance="outline">
+      <mat-label>{{ fields.price.label }}</mat-label>
+      <input
+        matInput
+        [formControlName]="fields.price.name"
+        [required]="fields.price.required"
+      />
+
+      <mat-error>
+        <app-validations
+          [control]="form.get(fields.price.name)"
+          [label]="fields.price.label"
+        ></app-validations>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field floatLabel="always" appearance="outline">
+      <mat-label>{{ fields.weight.label }}</mat-label>
+      <input
+        matInput
+        [formControlName]="fields.weight.name"
+        [required]="fields.weight.required"
+      />
+
+      <mat-error>
+        <app-validations
+          [control]="form.get(fields.weight.name)"
+          [label]="fields.weight.label"
+        ></app-validations>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field floatLabel="always" appearance="outline">
+      <mat-label>{{ fields.size.label }}</mat-label>
+      <input
+        matInput
+        [formControlName]="fields.size.name"
+        [required]="fields.size.required"
+      />
+
+      <mat-error>
+        <app-validations
+          [control]="form.get(fields.size.name)"
+          [label]="fields.size.label"
+        ></app-validations>
+      </mat-error>
+    </mat-form-field>
+
+    <app-image-form-field
+      [formControl]="form.get(fields.photos.name)"
+      [label]="fields.photos.label"
+      [path]="fields.photos.path"
+      [schema]="fields.photos.fileSchema"
+      [required]="fields.photos.required"
+      [max]="fields.photos.max"
+      [submitted]="ngForm.submitted"
+    ></app-image-form-field>
+
+  <div
+    class="form-buttons"
+    [class.form-buttons-modal]="modal"
+  >
+    <button
+      mat-raised-button
+      [disabled]="saveLoading"
+      color="primary"
+      type="submit"
+    >
+      <mat-icon
+        inline
+        fontSet="far"
+        fontIcon="fa-save"
+      ></mat-icon
+      >&#160;
+      <app-i18n key="common.save"></app-i18n>
+    </button>
+    <button
+      mat-flat-button
+      [disabled]="saveLoading"
+      (click)="doReset()"
+      type="button"
+    >
+      <mat-icon
+        inline
+        fontSet="fas"
+        fontIcon="fa-undo"
+      ></mat-icon
+      >&#160;
+      <app-i18n key="common.reset"></app-i18n>
+    </button>
+
+    <button
+      mat-flat-button
+      [disabled]="saveLoading"
+      type="button"
+      (click)="cancel.emit()"
+    >
+      <mat-icon
+        inline
+        fontSet="fas"
+        fontIcon="fa-times"
+      ></mat-icon
+      >&#160;
+      <app-i18n key="common.cancel"></app-i18n>
+    </button>
+  </div>
+</form>

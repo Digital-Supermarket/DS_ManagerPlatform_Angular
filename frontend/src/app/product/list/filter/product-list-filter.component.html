@@ -1,0 +1,118 @@
+<form
+  class="filter"
+  (ngSubmit)="doFilter()"
+  [formGroup]="form"
+  #ngForm="ngForm"
+  *ngIf="form"
+>
+  <div class="row">
+    <div class="col-xs-12 col-lg-6">
+      <mat-form-field floatLabel="always" appearance="outline">
+        <mat-label>{{ fields.code.label }}</mat-label>
+        <input
+          matInput
+          [formControlName]="fields.code.name"
+        />
+        <mat-error>
+          <app-validations
+            [control]="form.get(fields.code.name)"
+            [label]="fields.code.label"
+          ></app-validations>
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="col-xs-12 col-lg-6">
+      <mat-form-field floatLabel="always" appearance="outline">
+        <mat-label>{{ fields.name.label }}</mat-label>
+        <input
+          matInput
+          [formControlName]="fields.name.name"
+        />
+        <mat-error>
+          <app-validations
+            [control]="form.get(fields.name.name)"
+            [label]="fields.name.label"
+          ></app-validations>
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="col-xs-12 col-lg-6">
+      <mat-form-field floatLabel="always" appearance="outline">
+        <mat-label>{{ fields.price.label }}</mat-label>
+        <app-decimal-range-input
+          [formControl]="form.get(fields.priceRange.name)"
+        ></app-decimal-range-input>
+        <mat-error>
+          <app-validations
+            [control]="form.get(fields.priceRange.name)"
+            [label]="fields.priceRange.label"
+          ></app-validations>
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="col-xs-12 col-lg-6">
+      <mat-form-field floatLabel="always" appearance="outline">
+        <mat-label>{{ fields.weight.label }}</mat-label>
+        <app-decimal-range-input
+          [formControl]="form.get(fields.weightRange.name)"
+        ></app-decimal-range-input>
+        <mat-error>
+          <app-validations
+            [control]="form.get(fields.weightRange.name)"
+            [label]="fields.weightRange.label"
+          ></app-validations>
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="col-xs-12 col-lg-6">
+      <mat-form-field floatLabel="always" appearance="outline">
+        <mat-label>{{ fields.size.label }}</mat-label>
+        <input
+          matInput
+          [formControlName]="fields.size.name"
+        />
+        <mat-error>
+          <app-validations
+            [control]="form.get(fields.size.name)"
+            [label]="fields.size.label"
+          ></app-validations>
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="filter-buttons">
+    <button
+      mat-raised-button
+      [disabled]="loading"
+      color="primary"
+      type="submit"
+    >
+      <mat-icon
+        inline
+        fontSet="fas"
+        fontIcon="fa-search"
+      ></mat-icon
+      >&#160;
+      <app-i18n key="common.search"></app-i18n>
+    </button>
+    <button
+      mat-flat-button
+      [disabled]="loading"
+      (click)="doReset()"
+      type="button"
+    >
+      <mat-icon
+        inline
+        fontSet="fas"
+        fontIcon="fa-undo"
+      ></mat-icon
+      >&#160;
+      <app-i18n key="common.reset"></app-i18n>
+    </button>
+  </div>
+</form>

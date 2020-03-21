@@ -1,0 +1,138 @@
+<mat-nav-list>
+  <a
+    mat-list-item
+    routerLink=""
+    class="app-menu-item"
+    [routerLinkActive]="['is-active']"
+    [routerLinkActiveOptions]="{ exact: true }"
+  >
+    <mat-icon>home</mat-icon>
+    <span><app-i18n key="home.menu"></app-i18n></span>
+  </a>
+  <a
+    *ngIf="iamService.hasPermissionToRead"
+    mat-list-item
+    routerLink="/iam"
+    class="app-menu-item"
+    [routerLinkActive]="['is-active']"
+  >
+    <mat-icon>person_add</mat-icon>
+    <span><app-i18n key="iam.menu"></app-i18n></span>
+  </a>
+  <a
+    *ngIf="auditLogService.hasPermissionToRead"
+    mat-list-item
+    routerLink="/audit-log"
+    class="app-menu-item"
+    [routerLinkActive]="['is-active']"
+  >
+    <mat-icon>history</mat-icon>
+    <span><app-i18n key="auditLog.menu"></app-i18n></span>
+  </a>
+  <a
+    *ngIf="settingsService.hasPermissionToEdit"
+    mat-list-item
+    routerLink="/settings"
+    class="app-menu-item"
+    [routerLinkActive]="['is-active']"
+  >
+    <mat-icon>settings</mat-icon>
+    <span><app-i18n key="settings.menu"></app-i18n></span>
+  </a>
+  <a
+    *ngIf="clientService.hasPermissionToRead"
+    mat-list-item
+    routerLink="/client"
+    class="app-menu-item"
+    [routerLinkActive]="['is-active']"
+  >
+    <mat-icon>chevron_right</mat-icon>
+    <span
+      ><app-i18n key="entities.client.menu"></app-i18n
+    ></span>
+  </a>
+  <a
+    *ngIf="productService.hasPermissionToRead"
+    mat-list-item
+    routerLink="/product"
+    class="app-menu-item"
+    [routerLinkActive]="['is-active']"
+  >
+    <mat-icon>chevron_right</mat-icon>
+    <span
+      ><app-i18n key="entities.product.menu"></app-i18n
+    ></span>
+  </a>
+  <a
+    *ngIf="itemService.hasPermissionToRead"
+    mat-list-item
+    routerLink="/item"
+    class="app-menu-item"
+    [routerLinkActive]="['is-active']"
+  >
+    <mat-icon>chevron_right</mat-icon>
+    <span
+      ><app-i18n key="entities.item.menu"></app-i18n
+    ></span>
+  </a>
+  <a
+    *ngIf="shoppingListService.hasPermissionToRead"
+    mat-list-item
+    routerLink="/shopping-list"
+    class="app-menu-item"
+    [routerLinkActive]="['is-active']"
+  >
+    <mat-icon>chevron_right</mat-icon>
+    <span
+      ><app-i18n key="entities.shoppingList.menu"></app-i18n
+    ></span>
+  </a>
+  <a
+    *ngIf="aisleService.hasPermissionToRead"
+    mat-list-item
+    routerLink="/aisle"
+    class="app-menu-item"
+    [routerLinkActive]="['is-active']"
+  >
+    <mat-icon>chevron_right</mat-icon>
+    <span
+      ><app-i18n key="entities.aisle.menu"></app-i18n
+    ></span>
+  </a>
+  <a
+    *ngIf="clerkService.hasPermissionToRead"
+    mat-list-item
+    routerLink="/clerk"
+    class="app-menu-item"
+    [routerLinkActive]="['is-active']"
+  >
+    <mat-icon>chevron_right</mat-icon>
+    <span
+      ><app-i18n key="entities.clerk.menu"></app-i18n
+    ></span>
+  </a>
+  <a
+    *ngIf="managerService.hasPermissionToRead"
+    mat-list-item
+    routerLink="/manager"
+    class="app-menu-item"
+    [routerLinkActive]="['is-active']"
+  >
+    <mat-icon>chevron_right</mat-icon>
+    <span
+      ><app-i18n key="entities.manager.menu"></app-i18n
+    ></span>
+  </a>
+  <a
+    *ngIf="departmentService.hasPermissionToRead"
+    mat-list-item
+    routerLink="/department"
+    class="app-menu-item"
+    [routerLinkActive]="['is-active']"
+  >
+    <mat-icon>chevron_right</mat-icon>
+    <span
+      ><app-i18n key="entities.department.menu"></app-i18n
+    ></span>
+  </a>
+</mat-nav-list>

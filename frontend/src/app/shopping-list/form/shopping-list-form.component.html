@@ -1,0 +1,76 @@
+<form
+  class="form"
+  (ngSubmit)="doSave()"
+  [formGroup]="form"
+  #ngForm="ngForm"
+  *ngIf="form"
+>
+  <mat-form-field
+    floatLabel="always"
+    appearance="outline"
+    *ngIf="isEditing"
+  >
+    <mat-label>{{ fields.id.label }}</mat-label>
+    <input matInput [value]="record.id" [disabled]="true" />
+  </mat-form-field>
+
+    <app-item-form-field
+      [control]="form.get(fields.item.name)"
+      [label]="fields.item.label"
+      [required]="fields.item.required"
+      [fetchFn]="fields.item.fetchFn"
+      [mapperFn]="fields.item.mapperFn"
+      [showCreate]="!modal"
+      [submitted]="ngForm.submitted"
+      mode="multiple"
+    ></app-item-form-field>
+
+  <div
+    class="form-buttons"
+    [class.form-buttons-modal]="modal"
+  >
+    <button
+      mat-raised-button
+      [disabled]="saveLoading"
+      color="primary"
+      type="submit"
+    >
+      <mat-icon
+        inline
+        fontSet="far"
+        fontIcon="fa-save"
+      ></mat-icon
+      >&#160;
+      <app-i18n key="common.save"></app-i18n>
+    </button>
+    <button
+      mat-flat-button
+      [disabled]="saveLoading"
+      (click)="doReset()"
+      type="button"
+    >
+      <mat-icon
+        inline
+        fontSet="fas"
+        fontIcon="fa-undo"
+      ></mat-icon
+      >&#160;
+      <app-i18n key="common.reset"></app-i18n>
+    </button>
+
+    <button
+      mat-flat-button
+      [disabled]="saveLoading"
+      type="button"
+      (click)="cancel.emit()"
+    >
+      <mat-icon
+        inline
+        fontSet="fas"
+        fontIcon="fa-times"
+      ></mat-icon
+      >&#160;
+      <app-i18n key="common.cancel"></app-i18n>
+    </button>
+  </div>
+</form>

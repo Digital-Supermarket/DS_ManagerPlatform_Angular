@@ -1,0 +1,11 @@
+<h1 mat-dialog-title>
+  <app-i18n key="iam.new.titleModal"></app-i18n>
+</h1>
+<mat-dialog-content>
+  <app-iam-new-form
+    [saveLoading]="saveLoading"
+    (save)="doCreate($event)"
+    (cancel)="doCancel()"
+    [modal]="true"
+  ></app-iam-new-form>
+</mat-dialog-content>

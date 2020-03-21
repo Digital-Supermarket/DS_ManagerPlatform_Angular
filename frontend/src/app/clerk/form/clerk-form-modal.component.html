@@ -1,0 +1,11 @@
+<h1 mat-dialog-title>
+  <app-i18n key="entities.clerk.new.title"></app-i18n>
+</h1>
+<mat-dialog-content>
+  <app-clerk-form
+    [saveLoading]="saveLoading"
+    (save)="doCreate($event)"
+    (cancel)="doCancel()"
+    [modal]="true"
+  ></app-clerk-form>
+</mat-dialog-content>

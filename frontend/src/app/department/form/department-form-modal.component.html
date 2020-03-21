@@ -1,0 +1,11 @@
+<h1 mat-dialog-title>
+  <app-i18n key="entities.department.new.title"></app-i18n>
+</h1>
+<mat-dialog-content>
+  <app-department-form
+    [saveLoading]="saveLoading"
+    (save)="doCreate($event)"
+    (cancel)="doCancel()"
+    [modal]="true"
+  ></app-department-form>
+</mat-dialog-content>

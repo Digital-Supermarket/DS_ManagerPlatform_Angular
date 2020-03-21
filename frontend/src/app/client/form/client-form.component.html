@@ -1,0 +1,141 @@
+<form
+  class="form"
+  (ngSubmit)="doSave()"
+  [formGroup]="form"
+  #ngForm="ngForm"
+  *ngIf="form"
+>
+  <mat-form-field
+    floatLabel="always"
+    appearance="outline"
+    *ngIf="isEditing"
+  >
+    <mat-label>{{ fields.id.label }}</mat-label>
+    <input matInput [value]="record.id" [disabled]="true" />
+  </mat-form-field>
+
+    <mat-form-field floatLabel="always" appearance="outline">
+      <mat-label>{{ fields.name.label }}</mat-label>
+      <input
+        matInput
+        [formControlName]="fields.name.name"
+        [required]="fields.name.required"
+      appAutofocus
+      />
+
+      <mat-error>
+        <app-validations
+          [control]="form.get(fields.name.name)"
+          [label]="fields.name.label"
+        ></app-validations>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field floatLabel="always" appearance="outline">
+      <mat-label>{{ fields.phoneNumber.label }}</mat-label>
+      <input
+        matInput
+        [formControlName]="fields.phoneNumber.name"
+        [required]="fields.phoneNumber.required"
+      />
+
+      <mat-error>
+        <app-validations
+          [control]="form.get(fields.phoneNumber.name)"
+          [label]="fields.phoneNumber.label"
+        ></app-validations>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field floatLabel="always" appearance="outline">
+      <mat-label>{{ fields.email.label }}</mat-label>
+      <input
+        matInput
+        [formControlName]="fields.email.name"
+        [required]="fields.email.required"
+      />
+
+      <mat-error>
+        <app-validations
+          [control]="form.get(fields.email.name)"
+          [label]="fields.email.label"
+        ></app-validations>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field floatLabel="always" appearance="outline">
+      <mat-label>{{ fields.password.label }}</mat-label>
+      <input
+        matInput
+        [formControlName]="fields.password.name"
+        [required]="fields.password.required"
+      />
+
+      <mat-error>
+        <app-validations
+          [control]="form.get(fields.password.name)"
+          [label]="fields.password.label"
+        ></app-validations>
+      </mat-error>
+    </mat-form-field>
+
+    <app-shopping-list-form-field
+      [control]="form.get(fields.shoppingLists.name)"
+      [label]="fields.shoppingLists.label"
+      [required]="fields.shoppingLists.required"
+      [fetchFn]="fields.shoppingLists.fetchFn"
+      [mapperFn]="fields.shoppingLists.mapperFn"
+      [showCreate]="!modal"
+      [submitted]="ngForm.submitted"
+      mode="multiple"
+    ></app-shopping-list-form-field>
+
+  <div
+    class="form-buttons"
+    [class.form-buttons-modal]="modal"
+  >
+    <button
+      mat-raised-button
+      [disabled]="saveLoading"
+      color="primary"
+      type="submit"
+    >
+      <mat-icon
+        inline
+        fontSet="far"
+        fontIcon="fa-save"
+      ></mat-icon
+      >&#160;
+      <app-i18n key="common.save"></app-i18n>
+    </button>
+    <button
+      mat-flat-button
+      [disabled]="saveLoading"
+      (click)="doReset()"
+      type="button"
+    >
+      <mat-icon
+        inline
+        fontSet="fas"
+        fontIcon="fa-undo"
+      ></mat-icon
+      >&#160;
+      <app-i18n key="common.reset"></app-i18n>
+    </button>
+
+    <button
+      mat-flat-button
+      [disabled]="saveLoading"
+      type="button"
+      (click)="cancel.emit()"
+    >
+      <mat-icon
+        inline
+        fontSet="fas"
+        fontIcon="fa-times"
+      ></mat-icon
+      >&#160;
+      <app-i18n key="common.cancel"></app-i18n>
+    </button>
+  </div>
+</form>
